@@ -3,7 +3,7 @@
 FROM maven:3.8.5-openjdk-17 as build
 workdir /app
 COPY . .
-RUN mvn -f pom-xml clean package - DskipTests
+RUN mvn -f pom.xml clean package -DskipTests
  
 #ETAPA 2: CREACION DE LA IMAGEN FINAL
 FROM openjdk:17.0.1-jdk-slim

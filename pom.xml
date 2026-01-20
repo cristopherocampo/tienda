@@ -74,6 +74,9 @@
 							<artifactId>lombok</artifactId>
 						</path>
 					</annotationProcessorPaths>
+				 <compilerArgs>
+				  <arg>-Xlint</arg>
+				 </compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>

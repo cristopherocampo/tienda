@@ -32,6 +32,10 @@ section {
     padding: 10px;
     overflow-y: scroll;
 }
+.cat-sections{
+    position: relative!important;
+    background-color: #fff;
+    }
 footer {
     position: fixed;  
     background-color: black;

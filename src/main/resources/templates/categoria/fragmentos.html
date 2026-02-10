@@ -2,26 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head th:replace="~{general/fragmentos :: head}">
+    <head th:replace="~{general/plantilla :: head}">
         <title>Tienda</title>
-        
     </head>
 
 
     <body>
         <!-- fragmento 1 para Agregar categoria en ventana modal -->
-        <section th:fragment="agregar">
+        <section th:fragment="agregar" class="cat-sections">
             <!-- Button trigger modal -->
             <div class='row py-4 mb-2 bg-light'>
                 <div class='col-md-1'></div>
                 <div class='col-md-3'>
-                    <button type="button" class="btn btn-primary"  sec:authorize="hasRole('ROLE_ADMIN')"
+                    <button type="button" class="btn btn-primary" sec:authorize="hasRole('ROLE_ADMIN')"
                             data-bs-toggle="modal" data-bs-target="#agregarCategoriaModal">
                         <i class="fa-solid fa-plus"></i> [[#{categoria.agregar}]]</button>
                 </div>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="agregarCategoriaModal"  tabindex="-1" 
+            <div class="modal fade" id="agregarCategoriaModal" tabindex="-1"
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -58,7 +57,7 @@
         </section>
 
         <!-- fragmento 2 para el listado de categorias -->
-        <section th:fragment="listado" class="p-3">
+        <section th:fragment="listado" class="p-3 cat-sections">
             <div class="row p-3">
                 <div class="col-md-9">
                     <div class="card p-2">
@@ -85,10 +84,10 @@
                                                         th:data-bs-id="${c.idCategoria}"
                                                         th:data-bs-descripcion="${c.descripcion}">
                                                     <i class="fa-solid fa-trash"></i> [[#{accion.eliminar}]]
-                                                </button>                                           
+                                                </button>
                                                 <a th:href="@{/categoria/modificar/}+${c.idCategoria}" class="btn btn-warning">
                                                     <i class="fas fa-pencil-alt"></i> [[#{accion.actualizar}]]
-                                                </a>                                                
+                                                </a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -108,11 +107,11 @@
         </section>
 
         <!-- 3 Fragmento que se utiliza en la página modifca.html -->
-        <section th:fragment="editar">
+        <section th:fragment="editar" class="cat-sections">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <form method="POST" th:action="@{/categoria/guardar}" 
+                    <form method="POST" th:action="@{/categoria/guardar}"
                           th:object="${categoria}" class="was-validated" enctype="multipart/form-data">
                         <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
                         <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
@@ -120,12 +119,12 @@
                             <div class="col-md-4 d-grid">
                                 <a th:href="@{/categoria/listado}" class="btn btn-primary">
                                     <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]</a>
-                            </div>                                
+                            </div>
                             <div class="col-md-4 d-grid">
                                 <button type="submit" class="btn btn-success">
                                     <i class="fas fa-check"></i> [[#{accion.guardar}]]</button>
                             </div>
-                        </div>                        
+                        </div>
                         <div class="row">
                             <div class="col">
                                 <div class="card">
@@ -133,12 +132,12 @@
                                     <div class="card-body">
                                         <div class="mb-3">
                                             <label for="descripcion">[[#{categoria.descripcion}]]</label>
-                                            <input type="text" class="form-control" name="descripcion" 
+                                            <input type="text" class="form-control" name="descripcion"
                                                    th:field="*{descripcion}" required="true"/>
                                         </div>
                                         <div class="mb-3">
                                             <label for="activo">[[#{categoria.activo}]]</label>
-                                            <input class="form-check-input" type="checkbox" 
+                                            <input class="form-check-input" type="checkbox"
                                                    name="activo" id="activo" th:field="*{activo}"/>
                                         </div>
                                         <div class="mb-3">
@@ -157,11 +156,11 @@
         </section>
 
         <!-- 4 fragmento que se utiliza para confirmar que se desea eliminar una categoria -->
-        <section th:fragment="confirmarEliminar">
-            <div class="modal fade" 
-                 id="confirmModal" 
-                 tabindex="-1" 
-                 aria-labelledby="modalLabel" 
+        <section th:fragment="confirmarEliminar" class="cat-sections">
+            <div class="modal fade"
+                 id="confirmModal"
+                 tabindex="-1"
+                 aria-labelledby="modalLabel"
                  aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered custom-modal-animation">
                     <div class="modal-content animate-slide-up">

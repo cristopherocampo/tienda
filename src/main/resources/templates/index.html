@@ -1,34 +1,36 @@
- <!DOCTYPE html>
-
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
 <html xmlns="http://www.w3.org/1999/xhtml"
-
       xmlns:th="http://www.thymeleaf.org"
-
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <link href="/css/estilos.css" rel="stylesheet" type="text/css"/>
-
-    <head th:replace="~{general/fragmentos :: head}">
-
+    <head th:fragment="head">
         <title>TechShop</title>
+        <meta charset="UTF-8"/>
 
-        <meta charset="UTF-8" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/fav/favicon-16x16.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/fav/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="96x96" href="/fav/favicon-96x96.png"/>
+        <link rel="icon" type="image/png" sizes="256x256" href="/fav/favicon-256x256.png"/>  
+
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+
+        <script th:src="@{/js/rutinas.js}"></script>
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
 
     </head>
-
-    <body>
-
-        <header th:replace="~{general/fragmentos :: header}"/>
-
-        <main class="container mt-5"> <section>
-
-                <h2>[[#{carrito.titulo}]]</h2>
-
-            </section>
-
+    <body>    
+        <header th:replace="~{general/fragmentos :: header}"></header>
+        <!-- Contenido principal -->
+        <main>
+            [[#{carrito.titulo}]]
         </main>
-
-        <footer th:replace="~{general/fragmentos :: footer}"/>
-
+        <footer th:replace="~{general/fragmentos :: footer}"></footer>
     </body>
-
 </html>

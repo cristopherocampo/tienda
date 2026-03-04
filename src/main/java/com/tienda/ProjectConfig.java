@@ -83,4 +83,26 @@ public class ProjectConfig implements WebMvcConfigurer {
         ms.setDefaultEncoding("UTF-8");
         return ms;
     }
+    // ============ SEMANA 3 (Seguridad) ============
+
+//    @Bean
+//    public org.springframework.security.web.SecurityFilterChain securityFilterChain(org.springframework.security.config.annotation.web.builders.HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests((requests) -> requests
+//                // Permitir acceso libre a recursos estáticos (CSS, JS, Webjars para el COLOR)
+//                .requestMatchers("/", "/index", "/js/**", "/css/**", "/webjars/**", "/fav/**").permitAll()
+//                // Permitir ver listados a todos
+//                .requestMatchers("/producto/listado", "/categoria/listado").permitAll()
+//                // Restringir acciones de modificación solo a ADMIN
+//                .requestMatchers("/producto/nuevo", "/producto/guardar", "/producto/modificar/**", "/producto/eliminar/**").hasRole("ADMIN")
+//                .requestMatchers("/categoria/nuevo", "/categoria/guardar", "/categoria/modificar/**", "/categoria/eliminar/**").hasRole("ADMIN")
+//                .anyRequest().authenticated()
+//                )
+//                .formLogin((form) -> form
+//                .loginPage("/login")
+//                .permitAll())
+//                .logout((logout) -> logout.permitAll());
+//
+//        return http.build();
+//    }
 }

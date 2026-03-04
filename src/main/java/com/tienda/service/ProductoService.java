@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.stereotype.Service; // <--- AGREGAR ESTE IMPORT
+import org.springframework.stereotype.Service; // 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service // <--- ESTA ES LA LÍNEA QUE SOLUCIONA EL ERROR
+@Service 
 public class ProductoService {
 
     private final ProductoRepository productoRepository;
@@ -37,7 +37,7 @@ public class ProductoService {
     @Transactional
     public void save(Producto producto, MultipartFile imagenFile) {
         producto = productoRepository.save(producto);
-        if (!imagenFile.isEmpty()) { 
+        if (!imagenFile.isEmpty()) {
             try {
                 String rutaImagen = firebaseStorageService.uploadImage(
                         imagenFile, "producto",
@@ -61,5 +61,20 @@ public class ProductoService {
         } catch (DataIntegrityViolationException e) {
             throw new IllegalStateException("No se puede eliminar el producto. Tiene datos asociados.", e);
         }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Producto> consultaDerivada(double precioInf, double precioSup) {
+        return productoRepository.findByPrecioBetweenOrderByPrecioAsc(precioInf, precioSup);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Producto> consultaJPQL(double precioInf, double precioSup) {
+        return productoRepository.consultaJPQL(precioInf, precioSup);
+    }
+    
+    @Transactional(readOnly = true)
+    public List<Producto> consultaSQL(double precioInf, double precioSup) {
+        return productoRepository.consultaSQL(precioInf, precioSup);
     }
 }

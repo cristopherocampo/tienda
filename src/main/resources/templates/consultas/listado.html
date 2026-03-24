@@ -2,25 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-
     <head th:replace="~{general/fragmentos :: head}">
-        <link th:href="@{/css/estilos.css}" rel="stylesheet" type="text/css"/>
         <title>TechShop</title>
-        <meta charset="UTF-8" />
     </head>
-
     <body>
         <header th:replace="~{general/fragmentos :: header}"/>
-        
-        <main class="container mt-5"> 
-            <section>
-                <h2>[[#{carrito.titulo}]]</h2>
-            </section>
 
-            <section th:replace="~{consultas/fragmentos :: tabs}"/>
-
-            <section th:replace="~{consultas/fragmentos :: tarjetas}"/>
-        </main>
+        <section th:replace="~{consultas/fragmentos :: consultas}"/>
+        <section th:replace="~{consultas/fragmentos :: tarjetas}"/>
 
         <footer th:replace="~{general/fragmentos :: footer}"/>
     </body>

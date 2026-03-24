@@ -37,9 +37,14 @@ public class ProductoController {
         var productos = productoService.getProductos(false);
         model.addAttribute("productos", productos);
         model.addAttribute("totalProductos", productos.size());
+        
+        // CORRECCIÓN: Enviar objeto vacío para el Modal de agregar
+        model.addAttribute("producto", new Producto()); 
+        
         var categorias = categoriaService.getCategorias(true);
         model.addAttribute("categorias", categorias);
-        return "/producto/listado";
+        
+        return "producto/listado"; // Sin el / inicial
     }
     @PostMapping("/guardar")
     public String guardar(@Valid Producto producto, @RequestParam MultipartFile imagenFile, RedirectAttributes redirectAttributes) {
@@ -78,6 +83,7 @@ public class ProductoController {
         model.addAttribute("producto", productoOpt.get());
         var categorias = categoriaService.getCategorias(true);
         model.addAttribute("categorias", categorias);
-        return "/producto/modifica";
+        
+        return "producto/modifica"; // Asegúrate que el archivo se llame modifica.html
     }
 }
